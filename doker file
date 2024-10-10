@@ -1,0 +1,13 @@
+# Use the official Nginx image
+FROM nginx:alpine
+
+# Copy the HTML file into the Nginx HTML directory
+COPY index.html /usr/share/nginx/html/index.html
+
+# Expose port 80
+EXPOSE 80
+
+# Start Nginx (this is the default command for the Nginx image)
+CMD ["nginx", "-g", "daemon off;"]
+docker build -t login-page .
+docker run -d -p 8080:80 login-page
